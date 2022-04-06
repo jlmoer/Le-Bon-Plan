@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const usersRouter = require("./routers/usersRouter");
 const productsRouter = require("./routers/productsRouter");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
 
 // Handlebars configuration:
 app.engine("handlebars", handlebars.engine());
@@ -23,15 +25,7 @@ app.use("/products", productsRouter);
 app.get("/", (_req, res) => {
     res.render("homepage");
 });
-app.get("/login", (_req, res) => {
-    res.render("login");
-});
-app.get("/logout", (_req, res) => {
-    res.render("logout");
-});
-app.get("/register", (_req, res) => {
-    res.render("register");
-});
+
 app.get("/lyon", (_req, res) => {
     res.render("lyon");
 });
